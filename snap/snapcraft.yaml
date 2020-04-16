@@ -10,10 +10,20 @@ description: |
 grade: devel
 confinement: devmode
 
+layout:
+  /usr/share/dbus-1/interfaces:
+    symlink: $SNAP/usr/share/dbus-1/interfaces
+
+slots:
+  dbus-svc: # name that is used with 'snap connect' on slots side
+    interface: dbus
+    bus: system
+    name: org.keepalived.Vrrp1
+
 apps:
   keepalived:
     daemon: forking
-    command: usr/sbin/keepalived
+    command: usr/sbin/keepalived -f $SNAP_DATA/keepalived.conf
   "415":        # Ubuntu 18.04
     command: usr/sbin/keepalived
   genhash:
