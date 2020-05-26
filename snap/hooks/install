@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Create a default (emtpy) configuration file
-if [ ! -f /etc/keepalived/keepalived.conf ]; then
-  mkdir -p /etc/keepalived
-  touch /etc/keepalived/keepalived.conf
+if [ ! -f "$SNAP_DATA"/etc/keepalived/keepalived.conf ]; then
+  mkdir -p "$SNAP_DATA"/etc/keepalived
+  printf "<add keepalived configuration here>\n" > "$SNAP_DATA"/etc/keepalived/keepalived.conf
 fi
+
+# disable keepalived initially because it needs to be configured first
+snapctl stop --disable "$SNAP_NAME.keepalived"

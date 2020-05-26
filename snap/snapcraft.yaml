@@ -11,6 +11,8 @@ grade: devel
 confinement: devmode
 
 layout:
+  /etc/keepalived:
+    symlink: $SNAP_DATA/etc/keepalived
   /usr/share/dbus-1/interfaces:
     symlink: $SNAP/usr/share/dbus-1/interfaces
 
@@ -23,8 +25,8 @@ slots:
 apps:
   keepalived:
     daemon: forking
-    command: usr/sbin/keepalived -f $SNAP_DATA/keepalived.conf
-  "415":        # Ubuntu 18.04
+    command: usr/sbin/keepalived
+  keepalive-cmd:
     command: usr/sbin/keepalived
   genhash:
     command: usr/bin/genhash
