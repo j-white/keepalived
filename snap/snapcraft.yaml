@@ -22,6 +22,9 @@ slots:
     bus: system
     name: org.keepalived.Vrrp1
 
+system-usernames:
+   snap_daemon: shared
+
 apps:
   keepalived:
     daemon: forking
