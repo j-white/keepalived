@@ -29,6 +29,7 @@ apps:
   keepalived:
     daemon: forking
     command: usr/sbin/keepalived
+    plugs: [network-control]
   keepalive-cmd:
     command: usr/sbin/keepalived
   genhash:
